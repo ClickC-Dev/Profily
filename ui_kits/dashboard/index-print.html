@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>ProFily — Painel do cliente</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined){visibility:hidden}
+#root{width:1280px;height:800px;display:flex;overflow:hidden}
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+* { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; animation-play-state: running !important; transition-duration: 0s !important; }
+</style>
+</head>
+<body>
+<doc-page orientation="landscape" content-width="1280px" content-height="800px" margin="0">
+<div id="root"></div>
+</doc-page>
+<script type="text/babel" src="./Sidebar.jsx"></script>
+<script type="text/babel" src="./Topbar.jsx"></script>
+<script type="text/babel" src="./OverviewScreen.jsx"></script>
+<script type="text/babel" src="./DocumentsScreen.jsx"></script>
+<script type="text/babel" src="./TaxesScreen.jsx"></script>
+<script type="text/babel" src="./ChatScreen.jsx"></script>
+<script type="text/babel" src="./SettingsScreen.jsx"></script>
+<script type="text/babel" src="./LoginScreen.jsx"></script>
+<script type="text/babel">
+function App(){
+  const [screen,setScreen]=React.useState('overview');
+  React.useEffect(()=>{ if(window.lucide) window.lucide.createIcons(); });
+  const titles={overview:['Visão Geral','Bem-vinda de volta, Marina'],documents:['Documentos','Notas fiscais, boletos e extratos'],taxes:['Impostos','Guias e calendário de vencimentos'],chat:['Chat com contador',null],settings:['Configurações','Dados da conta e preferências']};
+  const screens={overview:<OverviewScreen/>,documents:<DocumentsScreen/>,taxes:<TaxesScreen/>,chat:<ChatScreen/>,settings:<SettingsScreen/>};
+  return (
+    <React.Fragment>
+      <Sidebar active={screen} onNavigate={setScreen} />
+      <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'auto',background:'var(--surface-page)'}}>
+        <Topbar title={titles[screen][0]} subtitle={titles[screen][1]} />
+        <div style={{padding:'32px'}}>{screens[screen]}</div>
+      </div>
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
