@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProFily — Design System</title>
+<meta name="description" content="Design System da ProFily Contabilidade Digital: marca, cores, tipografia, espaçamento, componentes e produtos.">
+<link rel="icon" href="assets/profily-mark.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --page-max:1200px;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--surface-page);}
+
+  /* ---------- Header ---------- */
+  header.top{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy-900);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .top-inner{
+    max-width:var(--page-max);margin:0 auto;padding:0 24px;
+    display:flex;align-items:center;justify-content:space-between;height:64px;
+  }
+  .brand-lockup{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;}
+  .brand-lockup img{height:28px;width:auto;display:block;}
+  .brand-lockup span{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.01em;color:#fff;}
+  nav.top-nav{display:flex;align-items:center;gap:4px;}
+  nav.top-nav a{
+    color:rgba(255,255,255,.72);text-decoration:none;font-size:14px;font-weight:500;
+    padding:8px 12px;border-radius:999px;transition:background var(--duration-fast) var(--ease-standard),color var(--duration-fast) var(--ease-standard);
+  }
+  nav.top-nav a:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .gh-link{
+    display:flex;align-items:center;gap:6px;color:#fff!important;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    font-size:13px!important;font-weight:600!important;padding:7px 14px!important;
+  }
+  .gh-link:hover{background:rgba(255,255,255,.16)!important;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--navy-900) 0%,var(--navy-800) 100%);
+    color:#fff;padding:72px 24px 64px;
+  }
+  .hero-inner{max-width:var(--page-max);margin:0 auto;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(63,193,240,.14);color:var(--sky-300);
+    border:1px solid rgba(63,193,240,.3);
+    font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky-400);}
+  .hero h1{
+    font-family:var(--font-display);font-weight:800;font-size:clamp(32px,5vw,56px);
+    line-height:1.1;letter-spacing:-0.02em;margin:0 0 16px;max-width:780px;
+  }
+  .hero p{font-size:18px;line-height:1.6;color:rgba(255,255,255,.72);max-width:620px;margin:0;}
+
+  /* ---------- Sections ---------- */
+  section.ds-section{max-width:var(--page-max);margin:0 auto;padding:64px 24px;}
+  section.ds-section + section.ds-section{border-top:1px solid var(--border-subtle);}
+  .section-head{margin-bottom:32px;}
+  .section-head .kicker{font-size:13px;font-weight:700;color:var(--accent-primary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
+  .section-head h2{font-family:var(--font-display);font-weight:800;font-size:30px;color:var(--text-primary);margin:0 0 8px;letter-spacing:-0.01em;}
+  .section-head p{font-size:15px;color:var(--text-secondary);margin:0;max-width:640px;}
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
+  .ds-card{
+    background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);
+    overflow:hidden;box-shadow:var(--shadow-sm);
+  }
+  .ds-card .card-label{
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    padding:14px 18px;border-bottom:1px solid var(--border-subtle);
+  }
+  .ds-card .card-label strong{font-size:14px;font-weight:600;color:var(--text-primary);}
+  .ds-card .card-label span{font-size:12px;color:var(--text-muted);}
+  .frame-wrap{position:relative;width:100%;background:var(--surface-sunken);overflow:hidden;}
+  .frame-wrap iframe{
+    position:absolute;top:0;left:0;border:0;transform-origin:top left;display:block;background:#fff;
+  }
+
+  /* Products (full-bleed, larger) */
+  .product-card{grid-column:1/-1;}
+  .product-card .card-label a{
+    font-size:12px;font-weight:600;color:var(--accent-primary);text-decoration:none;
+    display:inline-flex;align-items:center;gap:4px;
+  }
+  .product-card .card-label a:hover{color:var(--accent-primary-hover);}
+  .products-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+
+  footer.site-footer{
+    background:var(--navy-900);color:rgba(255,255,255,.6);padding:40px 24px;
+  }
+  .footer-inner{
+    max-width:var(--page-max);margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;
+    align-items:center;justify-content:space-between;font-size:13px;
+  }
+  .footer-inner a{color:rgba(255,255,255,.75);}
+
+  @media (max-width:760px){
+    nav.top-nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand-lockup" href="#top">
+      <img src="assets/profily-mark.png" alt="ProFily">
+      <span>ProFily</span>
+    </a>
+    <nav class="top-nav">
+      <a href="#marca">Marca</a>
+      <a href="#cores">Cores</a>
+      <a href="#tipografia">Tipografia</a>
+      <a href="#espacamento">Espaçamento</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#produtos">Produtos</a>
+      <a class="gh-link" href="https://github.com/ClickC-Dev/Profily" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">Design System</span>
+    <h1>A identidade visual da ProFily, documentada e pronta para uso.</h1>
+    <p>Cores, tipografia, espaçamento e componentes que formam a linguagem visual da ProFily Contabilidade Digital — de fundações a produtos aplicados.</p>
+  </div>
+</section>
+
+<section class="ds-section" id="marca">
+  <div class="section-head">
+    <p class="kicker">Fundamentos</p>
+    <h2>Marca</h2>
+    <p>Logotipo, símbolo e iconografia que representam a ProFily em qualquer aplicação.</p>
+  </div>
+  <div class="card-grid">
+    <div class="ds-card">
+      <div class="card-label"><strong>Logotipo</strong><span>Uso em fundos claros e escuros</span></div>
+      <div class="frame-wrap" data-w="700" data-h="260"><iframe class="card-frame" src="guidelines/brand-logo.html" data-w="700" data-h="260" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Símbolo</strong><span>Espiral + seta ascendente</span></div>
+      <div class="frame-wrap" data-w="700" data-h="140"><iframe class="card-frame" src="guidelines/brand-mark.html" data-w="700" data-h="140" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Iconografia</strong><span>Lucide — outline, traço 1.5px</span></div>
+      <div class="frame-wrap" data-w="700" data-h="160"><iframe class="card-frame" src="guidelines/iconography.html" data-w="700" data-h="160" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="cores">
+  <div class="section-head">
+    <p class="kicker">Fundamentos</p>
+    <h2>Cores</h2>
+    <p>Azul-céu como cor de ação, navy como âncora escura, neutros frios e cores semânticas para estados.</p>
+  </div>
+  <div class="card-grid">
+    <div class="ds-card">
+      <div class="card-label"><strong>Cores da marca</strong><span>Sky + Navy</span></div>
+      <div class="frame-wrap" data-w="700" data-h="140"><iframe class="card-frame" src="guidelines/colors-brand.html" data-w="700" data-h="140" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Escala Sky Blue</strong><span>Tints para acentos e hovers</span></div>
+      <div class="frame-wrap" data-w="700" data-h="110"><iframe class="card-frame" src="guidelines/colors-sky-scale.html" data-w="700" data-h="110" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Escala neutra</strong><span>Texto, bordas, superfícies</span></div>
+      <div class="frame-wrap" data-w="700" data-h="110"><iframe class="card-frame" src="guidelines/colors-neutral.html" data-w="700" data-h="110" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Cores semânticas</strong><span>Sucesso, alerta, erro, info</span></div>
+      <div class="frame-wrap" data-w="700" data-h="110"><iframe class="card-frame" src="guidelines/colors-semantic.html" data-w="700" data-h="110" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="tipografia">
+  <div class="section-head">
+    <p class="kicker">Fundamentos</p>
+    <h2>Tipografia</h2>
+    <p>Poppins para display e corpo de texto; Baloo 2 como fonte de destaque, usada com moderação.</p>
+  </div>
+  <div class="card-grid">
+    <div class="ds-card">
+      <div class="card-label"><strong>Display</strong><span>Poppins ExtraBold/Bold — títulos</span></div>
+      <div class="frame-wrap" data-w="700" data-h="220"><iframe class="card-frame" src="guidelines/type-display.html" data-w="700" data-h="220" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Corpo</strong><span>Poppins Regular/Medium — texto e UI</span></div>
+      <div class="frame-wrap" data-w="700" data-h="180"><iframe class="card-frame" src="guidelines/type-body.html" data-w="700" data-h="180" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Destaque</strong><span>Baloo 2 — momentos pontuais</span></div>
+      <div class="frame-wrap" data-w="700" data-h="140"><iframe class="card-frame" src="guidelines/type-accent.html" data-w="700" data-h="140" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="espacamento">
+  <div class="section-head">
+    <p class="kicker">Fundamentos</p>
+    <h2>Espaçamento &amp; Elevação</h2>
+    <p>Unidade base de 4px, cantos generosos e sombras suaves com tom navy.</p>
+  </div>
+  <div class="card-grid">
+    <div class="ds-card">
+      <div class="card-label"><strong>Escala de espaçamento</strong><span>Base 4px</span></div>
+      <div class="frame-wrap" data-w="700" data-h="140"><iframe class="card-frame" src="guidelines/spacing-scale.html" data-w="700" data-h="140" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Raio &amp; sombra</strong><span>Cantos e elevação</span></div>
+      <div class="frame-wrap" data-w="700" data-h="160"><iframe class="card-frame" src="guidelines/radius-shadow.html" data-w="700" data-h="160" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="componentes">
+  <div class="section-head">
+    <p class="kicker">Biblioteca</p>
+    <h2>Componentes</h2>
+    <p>Primitivos de UI prontos para uso em produtos ProFily — forms, feedback, navegação e mais.</p>
+  </div>
+  <div class="card-grid">
+    <div class="ds-card">
+      <div class="card-label"><strong>Botões</strong><span>Primário, escuro, secundário, ghost, danger</span></div>
+      <div class="frame-wrap" data-w="700" data-h="260"><iframe class="card-frame" src="components/core/buttons.card.html" data-w="700" data-h="260" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Card, Badge &amp; Tag</strong><span>Superfícies e chips de status</span></div>
+      <div class="frame-wrap" data-w="700" data-h="300"><iframe class="card-frame" src="components/core/cards-badges.card.html" data-w="700" data-h="300" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Campos de formulário</strong><span>Input, Select, Checkbox, Radio, Switch</span></div>
+      <div class="frame-wrap" data-w="700" data-h="320"><iframe class="card-frame" src="components/forms/forms.card.html" data-w="700" data-h="320" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Tabs</strong><span>Navegação por abas com underline</span></div>
+      <div class="frame-wrap" data-w="700" data-h="300"><iframe class="card-frame" src="components/navigation/tabs.card.html" data-w="700" data-h="300" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card">
+      <div class="card-label"><strong>Dialog, Toast &amp; Tooltip</strong><span>Modal, notificação e dica</span></div>
+      <div class="frame-wrap" data-w="700" data-h="360"><iframe class="card-frame" src="components/feedback/feedback.card.html" data-w="700" data-h="360" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="ds-section" id="produtos">
+  <div class="section-head">
+    <p class="kicker">Aplicado</p>
+    <h2>Produtos</h2>
+    <p>O sistema aplicado em telas reais: o portal do cliente e o site institucional.</p>
+  </div>
+  <div class="products-grid">
+    <div class="ds-card product-card">
+      <div class="card-label">
+        <strong>Portal do cliente</strong>
+        <a href="ui_kits/dashboard/index.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+      </div>
+      <div class="frame-wrap" data-w="1280" data-h="760"><iframe class="card-frame" src="ui_kits/dashboard/index.html" data-w="1280" data-h="760" loading="lazy"></iframe></div>
+    </div>
+    <div class="ds-card product-card">
+      <div class="card-label">
+        <strong>Site institucional</strong>
+        <a href="ui_kits/marketing-site/index.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+      </div>
+      <div class="frame-wrap" data-w="1440" data-h="600"><iframe class="card-frame" src="ui_kits/marketing-site/index.html" data-w="1440" data-h="600" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>ProFily — Contabilidade Digital · Design System</span>
+    <span>Desenvolvido por <a href="https://clickc.com.br" target="_blank" rel="noopener">ClickC</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function fit(iframe){
+    var w = parseFloat(iframe.dataset.w);
+    var h = parseFloat(iframe.dataset.h);
+    var wrap = iframe.parentElement;
+    var scale = wrap.clientWidth / w;
+    iframe.style.width = w + 'px';
+    iframe.style.height = h + 'px';
+    iframe.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = (h * scale) + 'px';
+  }
+  function fitAll(){
+    document.querySelectorAll('.card-frame').forEach(fit);
+  }
+  window.addEventListener('load', fitAll);
+  window.addEventListener('resize', fitAll);
+  document.querySelectorAll('.card-frame').forEach(function(f){ f.addEventListener('load', function(){ fit(f); }); });
+})();
+</script>
+
+</body>
+</html>
