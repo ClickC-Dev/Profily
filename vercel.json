@@ -1,1 +1,6 @@
-{}
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/design-system", "destination": "/design-system.html" }
+  ]
+}
